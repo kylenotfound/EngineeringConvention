@@ -6,7 +6,6 @@ public class Driver {
         Scanner scanner = new Scanner(System.in);
         System.out.println("how many conventions?");
         int rows = scanner.nextInt();
-        System.out.println();
         String [] [] conventions = new String [rows] [5];
         for(int i = 0; i < rows; i++) {
             for(int j = 0; j < 5; j++) {
@@ -16,7 +15,7 @@ public class Driver {
         }
 
         if(rows <= 1) {
-            System.out.println("#T");
+            System.out.println("#F");
             System.exit(1);
         }
 
@@ -38,8 +37,8 @@ public class Driver {
             int endB = Integer.parseInt(endTimes[(i+1) % conventions.length]);
             if ((startA <= endB) && (startB <= endA)) {
                 System.out.println(startA + " " + endA + " " + startB + " " + endB);
-                if (days[i].equals(days[i==days.length - 1 ? 0 : (i+1)])) {
-                    System.out.println(days[i] + " "  + days[i==days.length ? 0 : (i+1)]);
+                if (days[i].equals(days[i == days.length - 1 ? 0 : (i+1)])) {
+                    System.out.println(days[i] + " "  + days[i == days.length -1 ? 0 : (i+1)]);
                     System.out.println("#F");
                     System.exit(1);
                 }
