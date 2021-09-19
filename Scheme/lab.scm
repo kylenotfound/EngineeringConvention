@@ -6,8 +6,9 @@
 )
 
 (define (contains_big L)
-  (cond ((equal? (classify (car L)) "big")#t)
-        (else (contains_big (cdr L)))
-  )
+        (cond ((null? L) #f)
+              ((equal? (classify (car L)) "big") #t)
+              (else (contains_big (cdr L)))
+        )
 )
 
