@@ -1,31 +1,29 @@
-;,load file_name
-(define creditList '())
-
 (define (certificate Workshop_List)
     (cond 
-      (and 
-        (not (checkCreditCount(sum(createCreditList(L)))) #f)
-        (not (checkDates Workshop_List) #f)
-      )#t
-      (else #f)
+        (and (>= (sum Workshop_List) 5) (not(equal? (dates Workshop_List))#f)
+             #t
+        )
     )
 )
 
-(define (createCreditList L)
-    (creditList (car(cdr(car L)))) ;1st List 2nd Element
-    (creditList (cdr(car(cdr(car(L))))))   ;2nd List 2nd Element
-    (creditList (cdr(cdr(car(cdr(car(L)))))) ;3rd List 2nd Element
-    (creditList (cdr(cdr(cdr(car(cdr(car(L)))))))) ;4th List 2nd Element
-    (creditList (cdr(cdr(cdr(cdr(car(cdr(car(L))))))))) ;5th List 2nd Element
+(define (dates L)
+    ;check if the start date of the first list in the list 
+    ;and the end date of the second list in the list are not <= to eachother
+    ;otherwise recurse with the cdr of the list
+    (cond
+        (and (<= (car(cdddr(car L))) (cddddr(car(cdr L))) 
+            (<= (car(cdddr(car(cdr L)))) (cddddr(car L))))
+            #f
+        )
+        (else (dates (cdr L)))
+    )
+
 )
 
 
 (define (sum L)
-    (cond (null? L) 0
-        (+ (car L) (sum (cdr L)))
+    ;Gets every 2nd Element of the list, in the list and sum them.
+    (cond ((null? L) 0)
+        ((+ (car(cdr(car L))) (sum (cdr L))))
     )
-)
-
-(define (checkCreditCount credits)
-    (cond (>= credits 5)#t)
 )
