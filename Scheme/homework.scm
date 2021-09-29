@@ -1,23 +1,33 @@
 (define (certificate Workshop_List)
     (cond 
-        (and (>= (sum Workshop_List) 5) (not(equal? (dates Workshop_List))#f)
-             #t
-        )
+        ((and(>= (sum Workshop_List) 5) (not (equal? (dates Workshop_List) #f)))#t)
     )
 )
 
 (define (dates L)
-    ;check if the start date of the first list in the list 
-    ;and the end date of the second list in the list are not <= to eachother
-    ;otherwise recurse with the cdr of the list
     (cond
-        (and (<= (car(cdddr(car L))) (cddddr(car(cdr L))) 
-            (<= (car(cdddr(car(cdr L)))) (cddddr(car L))))
-            #f
-        )
+        ((null? L)#t)
+        ((null? (cdr L))#t)
+        ((and (<= (startTimeFirstDay(car L)) (endTimeSecondDay(car(cdr L)))) (<= (startTimeSecondDay(car(cdr L))) (endTimeFirstDay(car L)) )#f))
         (else (dates (cdr L)))
     )
 
+)
+
+(define (startTimeFirstDay L)
+    (car(cdddr L)) ;fourth number of list passed
+)
+
+(define (endTimeSecondDay L)
+    (car(cddddr L)) ;fifth number of list passed
+)
+
+(define (startTimeSecondDay L)
+    (car(cdddr L))
+)
+
+(define (endTimeFirstDay L)
+    (car(cddddr L))
 )
 
 
