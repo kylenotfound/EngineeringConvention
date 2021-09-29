@@ -34,6 +34,6 @@
 (define (sum L)
     ;Gets every 2nd Element of the list, in the list and sum them.
     (cond ((null? L) 0)
-        ((+ (car(cdr(car L))) (sum (cdr L))))
+        ((+ (car(cddr(car L))) (sum (cdr L))))
     )
 )
