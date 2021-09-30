@@ -1,14 +1,13 @@
 (define (certificate Workshop_List)
-    (cond 
-        ((and(>= (sum Workshop_List) 5) (not (equal? (dates Workshop_List) #f)))#t)
+    (cond
+        ((and (>= (sum Workshop_List) 5) (dates Workshop_List)))
     )
 )
 
 (define (dates L)
     (cond
-        ((null? L)#t)
-        ((null? (cdr L))#t)
-        ((and (<= (startTimeFirstDay(car L)) (endTimeSecondDay(car(cdr L)))) (<= (startTimeSecondDay(car(cdr L))) (endTimeFirstDay(car L)) )#f))
+        ((null? L) #t)
+        ((and (<= (startTimeFirstDay(car L)) (endTimeSecondDay(car(cdr L)))) (<= (startTimeSecondDay(car(cdr L))) (endTimeFirstDay(car L)))))
         (else (dates (cdr L)))
     )
 
