@@ -14,15 +14,17 @@
 
 (define (checkDates L)
     (cond
-        ((null? L) #f)
+        ((null? (cdr L)) #f)
         ((and (<= (startTimeFirstDay(car L)) (endTimeSecondDay(car(cdr L)))) (<= (startTimeSecondDay(car(cdr L))) (endTimeFirstDay(car L))) #t))
+        (else (checkDates (cdr L)))
     )
 )
 
 (define (checkDayNumber L)
     (cond
-        ((null? L) #f)
+        ((null? (cdr L)) #f)
         ((equal? (checkDateOne L) (checkDateTwo L)))
+        (else (checkDayNumber (cdr L)))
     )
 )
 
@@ -47,7 +49,7 @@
 )
 
 (define (checkDateTwo L)
-    (car(cdr(cdr L)))
+    (car(cddr(car L)))
 )
 
 
