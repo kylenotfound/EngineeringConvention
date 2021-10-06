@@ -1,43 +1,43 @@
 (define (certificate Workshop_List)
     (cond
-        ((and (>= (sum Workshop_List) 5) (dates Workshop_List)))
+        ((and (>= (sum Workshop_List) 5) (compare Workshop_List)))
     )
 )
 
-(define (dates L)
+(define (compare L)
     (cond
         ((null? (cdr L)) #t)
-        ((and (checkDates L) (checkDayNumber L) #f))
-        (else (dates (cdr L)))
+        ((and (checkDates (car L) (cdr L)) (checkDayNumber (car L) (cdr L))))
+        (else (compare (cdr L)))
     )
 )
 
-(define (checkDates L)
+(define (checkDates L J)
     (cond
-        ((null? (cdr L)) #f)
-        ((and (<= (startTimeFirstDay(car L)) (endTimeSecondDay(car(cdr L)))) (<= (startTimeSecondDay(car(cdr L))) (endTimeFirstDay(car L))) #t))
-        (else (checkDates (cdr L)))
+        ((null? (cdr J)) #f)
+        ((and (<= (startTimeFirstDay L) (endTimeSecondDay J)) (<= (startTimeSecondDay J) (endTimeFirstDay L)) #t))
+        (else (checkDates L (cdr J)))
     )
 )
 
-(define (checkDayNumber L)
+(define (checkDayNumber L J)
     (cond
-        ((null? (cdr L)) #f)
-        ((equal? (checkDateOne L) (checkDateTwo L)))
-        (else (checkDayNumber (cdr L)))
+        ((null? (cdr J)) #f)
+        ((equal? (checkDateOne L) (checkDateTwo J)))
+        (else (checkDayNumber L (cdr J)))
     )
 )
 
 (define (startTimeFirstDay L)
-    (car(cdddr L)) ;fourth number of list passed
+    (car(cdddr L)) ;4th element of the car of the list passed
 )
 
 (define (endTimeSecondDay L)
-    (car(cddddr L)) ;fifth number of list passed
+    (car(cddddr(car L))) ;5th element of the cdr of the list passed
 )
 
 (define (startTimeSecondDay L)
-    (car(cdddr L))
+    (car(cdddr(car L))) ;4th element of the cdr of the list passed
 )
 
 (define (endTimeFirstDay L)
@@ -45,11 +45,11 @@
 )
 
 (define (checkDateOne L)
-    (car(cdr(car L)))
+    (car(cdr L)) ;car list's second element
 )
 
 (define (checkDateTwo L)
-    (car(cddr(car L)))
+    (car(cdr(car L))) ;cdr list's second element
 )
 
 
