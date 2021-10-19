@@ -40,9 +40,7 @@ begin
    
    for i in 1..Count loop
       Credits := Credits + list(i, 3);
-   end loop;
-      Put(Credits);
-      
+   end loop;      
       Put_Line("");
     if Credits < 5 or Schedule then
         Put_Line ("No certificate");
