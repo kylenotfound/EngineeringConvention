@@ -18,7 +18,7 @@ begin
     end if;
   end loop;
 
-  Put(Summ);
+  Put(Summ, Exp => 0);
 
 
 end main;
