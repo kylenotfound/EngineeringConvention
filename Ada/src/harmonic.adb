@@ -10,15 +10,20 @@ begin
 
   Get(Num);
 
-  for i in 1..Num loop
-    if (i mod 2 = 0) then
-        Summ := Summ - (1.0 / Float(i));
-    else
-        Summ := Summ + (1.0 / Float(i));
-    end if;
-  end loop;
+  if (Num > 0) then
+    for i in 1..Num loop
+      if (i mod 2 = 0) then
+          Summ := Summ - (1.0 / Float(i));
+      else
+          Summ := Summ + (1.0 / Float(i));
+      end if;
+    end loop;
+    Put(Summ, Exp => 0);
+  else
+    Put_Line("Error: N must be positive");
+  end if;
 
-  Put(Summ, Exp => 0);
+  
 
 
 end main;
