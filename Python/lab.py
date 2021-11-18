@@ -19,7 +19,6 @@ def past_tense(word):
         return word + word_array[-1] + "ed"
     if(word_array[-2] in consonants and word_array[-1] == 'y'):
         return word[:-1] + "ied"
-        return word[:-1] + "ied"
     if(word_array[-1] == 'e'):
         return word + "d"
     if(word_array[-1] == 'c'):
