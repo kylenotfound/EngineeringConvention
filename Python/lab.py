@@ -11,7 +11,7 @@ def past_tense(word):
 
     vowels = ['a', 'e', 'i', 'o', 'u']
     consonants = ['b', 'd', 'f', 'g', 'h', 'i', 'j',  'l',
-            'm', 'n', 'p', 'q', 'r', 's''t', 'v', 'z']
+            'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'z']
     word_array = [char for char in word]
 
     #Check for past tenses by seeing what last char in the string is
