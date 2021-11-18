@@ -1,3 +1,4 @@
+#! /usr/bin/python
 def certificate(Workshop_List):
   if(checkCredits(Workshop_List) and checkDates(Workshop_List)) :
     print("True")
@@ -11,7 +12,6 @@ def checkDates(Workshop_List):
         if((Workshop_List[i][3] <= Workshop_List[j][4]) and (Workshop_List[i][3] >= Workshop_List[j][3])):
           return False
   return True
-
 
 def checkCredits(Workshop_List):
   count = 0
